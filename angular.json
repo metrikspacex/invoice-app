@@ -1,0 +1,135 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false,
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "configurations": {
+            "development": {
+              "buildOptimizer": false,
+              "extractLicenses": false,
+              "namedChunks": true,
+              "optimization": false,
+              "sourceMap": true,
+              "vendorChunk": true
+            },
+            "production": {
+              "budgets": [
+                {
+                  "maximumError": "1mb",
+                  "maximumWarning": "500kb",
+                  "type": "initial"
+                },
+                {
+                  "maximumError": "4kb",
+                  "maximumWarning": "2kb",
+                  "type": "anyComponentStyle"
+                }
+              ],
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production",
+          "options": {
+            "assets": [
+              "projects/frontend/src/favicon.ico",
+              "projects/frontend/src/assets"
+            ],
+            "index": "projects/frontend/src/index.html",
+            "inlineStyleLanguage": "scss",
+            "main": "projects/frontend/src/main.ts",
+            "outputPath": "dist/frontend",
+            "polyfills": [
+              "zone.js"
+            ],
+            "scripts": [],
+            "styles": [
+              "projects/frontend/src/styles.scss"
+            ],
+            "tsConfig": "projects/frontend/tsconfig.app.json"
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "frontend:build:development"
+            },
+            "production": {
+              "browserTarget": "frontend:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "assets": [
+              "projects/frontend/src/favicon.ico",
+              "projects/frontend/src/assets"
+            ],
+            "inlineStyleLanguage": "scss",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "scripts": [],
+            "styles": [
+              "projects/frontend/src/styles.scss"
+            ],
+            "tsConfig": "projects/frontend/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/frontend/**/*.ts",
+              "projects/frontend/**/*.html"
+            ]
+          }
+        }
+      },
+      "prefix": "app",
+      "projectType": "application",
+      "root": "projects/frontend",
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": true,
+          "style": "scss"
+        },
+        "@schematics/angular:directive": {
+          "standalone": true
+        },
+        "@schematics/angular:guard": {
+          "functional": true
+        },
+        "@schematics/angular:interceptor": {
+          "functional": true
+        },
+        "@schematics/angular:pipe": {
+          "standalone": true
+        },
+        "@schematics/angular:resolver": {
+          "functional": true
+        }
+      },
+      "sourceRoot": "projects/frontend/src"
+    }
+  },
+  "version": 1
+}

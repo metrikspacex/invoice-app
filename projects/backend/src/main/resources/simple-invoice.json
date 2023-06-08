@@ -1,0 +1,47 @@
+[
+  {
+    "email": "admin@gmail.com",
+    "id": 1,
+    "invoices": [
+      {
+        "clientAddress": {
+          "city": "Chillicothe",
+          "country": "United States",
+          "postCode": "45601",
+          "street": "9518 Meadow Ave"
+        },
+        "clientEmail": "client@gmail.com",
+        "clientName": "John Doe",
+        "createdAt": "2023-06-07",
+        "description": "Website",
+        "id": "",
+        "items": [
+          {
+            "name": "Backend",
+            "price": 1000,
+            "quantity": 1,
+            "total": 1000
+          },
+          {
+            "name": "Frontend",
+            "price": 1000,
+            "quantity": 1,
+            "total": 1000
+          }
+        ],
+        "paymentDue": "2023-06-07",
+        "paymentTerms": 1,
+        "senderAddress": {
+          "city": "Stillwater",
+          "country": "United States",
+          "postCode": "55082",
+          "street": "216 Blackburn Dr"
+        },
+        "status": "paid",
+        "total": 2000
+      }
+    ],
+    "password": "admin",
+    "role": "ADMIN"
+  }
+]
